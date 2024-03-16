@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <record id="view_telegram_client_form" model="ir.ui.view">
+            <field name="name">Telegram Account Settings Form</field>
+            <field name="model">telegram.client</field>
+            <field name="arch" type="xml">
+
+            <form string="Telegram Account Settings">
+                <header>
+                    <button name="open_telegram_auth_wizard" string="Sign In" type="object" class="oe_highlight" attrs="{'invisible': False}"/>
+                    <button name="start_event_loop" string="start telegram client" type="object" class="oe_highlight"/>
+
+                </header>
+                <div class="alert alert-info text-center o_form_header" role="alert" 
+                    attrs="{'invisible': [('auth_status', '=', False)]}">
+                    <strong>Telegram server is active   </strong>
+                    <!-- <a class="close" data-dismiss="alert" href="#">x</a> -->
+                </div>
+
+                <div class="alert alert-danger text-center o_form_header" role="alert" 
+                    attrs="{'invisible': [('auth_status', '=', True)]}">
+                    <strong>Telegram server is not active. Try to start it. </strong>
+                    <!-- <a class="close" data-dismiss="alert" href="#">x</a> -->
+                </div>
+
+                <sheet>
+                    <group class="o_label_nowrap">
+                        <field name="name"/>
+                        <field name="api_id"/>
+                        <field name="api_hash"/>
+                        <field name="phone_number"/>
+                        <field name="session_name"/>
+                        <field name="username"/>
+                        <field name="server_url"/>
+                        <field name="users"/>
+                        <field name="auth_status" reload="1"/>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+    </data>
+</odoo>
+
